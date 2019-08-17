@@ -1,0 +1,30 @@
+body {
+    width: 540px;
+    text-align: center;
+    background: #f2dfde;
+    margin: 0 auto;
+    font-family: 'ConnectionRegular'; 
+} 
+
+.img{
+    width: 80px;
+    height:80px;
+    background: #f2dfde;
+    margin: 0 auto;
+}
+.brown {
+    color: #37231f;
+}
+
+#word {
+    text-align: center;
+    margin: 10px;
+
+}
+
+#lives {
+    border-top: solid 1px ;
+}
+h1 {
+    border-bottom: solid 1px ;
+}

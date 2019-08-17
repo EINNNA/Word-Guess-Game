@@ -8,6 +8,8 @@ var lives = document.getElementById("lives");
 var letterGuesses = document.getElementById("letterGuesses");
 var wordArea = document.getElementById("word");
 
+console.log(lives);
+console.log(letterGuesses);
 console.log(wordArea);
 
 var unFilled = [];
@@ -21,6 +23,8 @@ wordArea.innerHTML = unFilled.join(', ');
 var correctGuess;
 var wrongGuess;
 var lifeCount = 15;
+
+// lives.innerHTML = lifeCount.join('');
 
 document.onkeyup = function(event) {
         var letterGuess = event.key.toLowerCase;
@@ -39,17 +43,29 @@ document.onkeyup = function(event) {
                 } 
         else {
                 console.log('incorrect guess')
+
         }
         };
+//lives 
 
-        function reduceLives() {
-                lives--
-              }
+        if (letterGuess !== wordGuess[i]) {
+                lifeCount--
+                console.log(lifeCount)
+        }
      
         function setup() {
                 document.getElementById("word").innerHTML += unFilled.join(" ");
-                document.getElementById("lives").innerHTML += lives;
+                document.getElementById("lives").innerHTML += lifeCount;
               };
+
+        if (lives == 0) {
+        document.getElementById("lives").innerHTML = 'You Lose!';
+        document.getElementById("word").innerHTML = wordGuess;
+
+        }
+
+        if (!document.getElementById) document.write('<link rel="stylesheet" type="text/css" href="../css/reset.css>');
+
 /*
  var leftOvers = wordGuess.length;      
  
