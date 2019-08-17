@@ -16,10 +16,15 @@ body {
     color: #37231f;
 }
 
-.word {
-    border-bottom: solid 1px ;
+#word {
+    text-align: center;
+    margin: 10px;
+
 }
 
+#lives {
+    border-top: solid 1px ;
+}
 h1 {
     border-bottom: solid 1px ;
 }

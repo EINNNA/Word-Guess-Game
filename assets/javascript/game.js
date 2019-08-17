@@ -1,43 +1,54 @@
-//working
+
 var dogBreed = ["corgi", "beagle", "bulldog", "collie", "maltese", "mastiff", "poodle", "shiba"];
-
-
-
-//working
+console.log(dogBreed);
 var wordGuess = dogBreed[Math.floor(Math.random() * dogBreed.length)];
+console.log(wordGuess);
+// divs
+var lives = document.getElementById("lives");
+var letterGuesses = document.getElementById("letterGuesses");
+var wordArea = document.getElementById("word");
 
+console.log(wordArea);
 
-
-// working
 var unFilled = [];
-        for (var i = 0; i < dogBreed.length; i++) {
-        unFilled[i] = "_";
+for (var i = 0; i < dogBreed.length; i++) {
+unFilled[i] = "_";
+}
+console.log(unFilled);
+
+wordArea.innerHTML = unFilled.join(', ');
+
+var correctGuess;
+var wrongGuess;
+var lifeCount = 15;
+lives.innerHTML = lifeCount.join('');
+
+document.onkeyup = function(event) {
+        var letterGuess = event.key.toLowerCase;
+        console.log(letterGuess); 
+        if (letterGuess == dogBreed) {
+                lives++;
         }
+ };
 
-        document.getElementById("#word").innerHTML = unFilled;
-
-// working
+/*
  var leftOvers = wordGuess.length;      
- var lives = 15;
  
+ var remainingLetters = wordGuess.length;
 
-document.onkeydown = function(event) {
-        var letterGuess = event.key; 
-        console.log(letterGuess);
-        var wordContent = document.getElementById(".word");
-        (letterGuess).append(wordContent);
 
+
+ while (leftOvers > 0) {
+
+
+
+        for (var i = 0; i < wordGuess.length; i++) {
+        if (dogBreed[i] === letterGuess) {
+        wordGuess[i] = letterGuess;
         }
+}
+}
+*/
 
-
-
-
-
-
- console.log(leftOvers);
- 
- console.log(dogBreed);
- console.log(wordGuess);
- console.log(unFilled);
 
 
