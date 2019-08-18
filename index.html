@@ -4,19 +4,30 @@
         <title>Dog Breed Guessing Game</title>
         <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/connection" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="assets/css/style.css"></script>
-
+        <link rel="stylesheet" type="text/css" href="assets/css/reset.css"></script>
     </head>
     <body>
-        <img src="assets/images/dogcouple.jpg">
-        <h1 class="brown">GUESS THE DOG BREED!</h1>
-        <p class="brown lives">PRESS ANY LETTER TO GUESS!</p>
-        <div class="img"></div>
-        <div id="word"></div>
-        <div id="lives">LIVES LEFT:</div>
-        <p class="guesses brown">GUESSES:</p>
-        <p id="letterGuesses"></p>
+        <div class="message-underlay hide" id="underlay"></div>
+        <div class="message hide" id="message">
+            <div id="title"></div>
+            <div class="content">The Correct Answer was <span id="answer"></span></div>
+            <div class="replay" onclick="restartGame()">Play Again</div>
+        </div>
 
-        <div class="reset">Reset</div>
+        <div class="wrap">
+            <h1 class="brown">GUESS THE DOG BREED!</h1>
+            <div class="ready" id="ready" onclick="setupGame()">
+            <div class="start">Click Here to Start!</div>
+        </div>
+        <div class="game hide" id="game">
+            <img src="assets/images/dogcouple.jpg">
+            <p class="brown lives">PRESS ANY LETTER TO GUESS!</p>
+           <!-- <div class="img"></div> -->
+            <div id="word"></div>
+            <div>LIVES LEFT: <br><span class="heart">❤</span> <span id="lives"></span></div>
+            <p>INCORRECT LETTERS GUESSED: <br><span id="letterGuessed"></span></p>
+        </div>
+        </div>
     </body>
     <script src="assets/javascript/game.js"></script>
 </html>

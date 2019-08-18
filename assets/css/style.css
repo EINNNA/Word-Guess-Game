@@ -4,9 +4,10 @@ body {
     background: #f2dfde;
     margin: 0 auto;
     font-family: 'ConnectionRegular'; 
-} 
 
-.img{
+}
+
+.img {
     width: 80px;
     height:80px;
     background: #f2dfde;
@@ -27,4 +28,76 @@ body {
 }
 h1 {
     border-bottom: solid 1px ;
+}
+
+.hide {
+    display:none;
+}
+
+.wrap {
+    position:absolute; 
+    top:50%; 
+    left:50%; 
+    transform:translate(-50%, -50%); 
+    font-size: 16px; 
+    text-align: center;
+}
+
+
+.heart {color:red;}
+#lives {color:red;}
+
+.message-underlay {
+    background:rgba(0,0,0,0.9); 
+    width:100vw; height:100vh; 
+    position: fixed; 
+    top:0; 
+    left:0; 
+    z-index: 998;}
+
+.message {
+    position:absolute; 
+    top:50%; 
+    left:50%; 
+    transform:translate(-50%, -50%); 
+    color:#fff; 
+    z-index: 999; 
+    text-align: center;
+}
+
+#title {
+    font-size: 5em; 
+    line-height: 1;
+}
+
+.content {
+    margin-top: 40px;
+}
+.replay {
+    margin-top:40px; 
+    padding:10px 20px; 
+    background:#fff; 
+    color:#333; 
+    font-weight: bold; 
+    border-radius: 40px; 
+    cursor: pointer;
+}
+
+.replay:hover {
+    background:#f8f8f8;
+}
+
+.start {
+    margin-top:40px; 
+    padding:10px 20px; 
+    background:#333; 
+    color:#fff; 
+    font-weight: bold; 
+    border-radius: 40px; 
+    cursor: pointer;}
+.start:hover {
+    background:#555;
+}
+#answer {
+    text-transform: capitalize;
 }

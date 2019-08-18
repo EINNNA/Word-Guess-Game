@@ -1,89 +1,103 @@
+       // globalvariables
+       var dogBreed = ["corgi", "beagle", "bulldog", "collie", "maltese", "mastiff", "poodle", "shiba"];
+       /*var dogImage = ["../images/corgi.jpg", 
+       "../images/beagle.jpg", 
+       "../images/bulldog.jpg", 
+       "../images/collie.jpg", 
+       "../images/maltese.jpg", 
+       "../images/mastiff.jpg", 
+       "../images/poodle.jpg", 
+       "../images/shiba.jpg"];*/
+       var wordGuess = dogBreed[Math.floor(Math.random() * dogBreed.length)];
+       var wordArea = document.getElementById("word");
+       var lives = 10;
+       var guessed = [];
+       var game = false; //for start up/screen
+       var unFilled = [];
 
-var dogBreed = ["corgi", "beagle", "bulldog", "collie", "maltese", "mastiff", "poodle", "shiba"];
-console.log(dogBreed);
-var wordGuess = dogBreed[Math.floor(Math.random() * dogBreed.length)];
-console.log(wordGuess);
-// divs
-var lives = document.getElementById("lives");
-var letterGuesses = document.getElementById("letterGuesses");
-var wordArea = document.getElementById("word");
 
-console.log(lives);
-console.log(letterGuesses);
-console.log(wordArea);
+       // listeners
+       document.onkeyup = function(event) {
 
-var unFilled = [];
-for (var i = 0; i < wordGuess.length; i++) {
-unFilled[i] = "_";
-}
-console.log(unFilled);
+             var letterGuess = event.key;
+             var correctGuess = false; //to stop code before game starts
+        //game starting
+             if(game == true) {
+               for (var i = 0; i < wordGuess.length; i++) {
+                 if(letterGuess == wordGuess[i]) {
+                   unFilled.splice(i,1,letterGuess)
+                   correctGuess = true //because game started
+                 }
+               }
 
-wordArea.innerHTML = unFilled.join(', ');
+               if(correctGuess) {
+                 console.log('correct guess')
+                 document.getElementById("word").innerHTML = unFilled.join(" ");
+               } else {
+                 incorrectGuess(letterGuess)
+                 console.log('incorrect guess')
+               }
 
-var correctGuess;
-var wrongGuess;
-var lifeCount = 15;
+               var winCond = true;
+               for (var i = 0; i < unFilled.length; i++) {
+                 if(unFilled[i] ==  '_') {
+                   winCond = false;
+                   console.log ('spot')
+                 }
+               }
 
-// lives.innerHTML = lifeCount.join('');
-
-document.onkeyup = function(event) {
-        var letterGuess = event.key.toLowerCase;
-        var correctGuess = false;
-        for (var i = 0; i < wordGuess.length; i++) {
-
-        if(letterGuess == wordGuess[i]) {
-                unFilled.splice(i,1,letterGuess)
-                console.log(unFilled)
-                correctGuess = true
-        }
-        }
-    
-        if(correctGuess) {
-                console.log('correct guess')
-                } 
-        else {
-                console.log('incorrect guess')
-
-        }
+               // Game Win
+               if(winCond == true) {
+                 game = false
+                 document.getElementById("title").innerHTML = 'Winner!';
+                 document.getElementById("answer").innerHTML = wordGuess;
+                 document.getElementById("underlay").classList.remove("hide");
+                 document.getElementById("message").classList.remove("hide");
+               }
+             }
         };
-//lives 
 
-        if (letterGuess !== wordGuess[i]) {
-                lifeCount--
-                console.log(lifeCount)
+
+        // Functions
+        function incorrectGuess(letter) {
+          lives--
+          console.log(lives)
+          guessed.push(letter)
+          document.getElementById("letterGuessed").innerHTML = guessed;
+          document.getElementById("lives").innerHTML = lives;
+
+          // Game Lose
+
+          if(lives == 0) {
+            game = false
+            document.getElementById("title").innerHTML = 'You Lose!';
+            document.getElementById("answer").innerHTML = wordGuess;
+            document.getElementById("underlay").classList.remove("hide");
+            document.getElementById("message").classList.remove("hide");
+          }
         }
-     
-        function setup() {
-                document.getElementById("word").innerHTML += unFilled.join(" ");
-                document.getElementById("lives").innerHTML += lifeCount;
-              };
 
-        if (lives == 0) {
-        document.getElementById("lives").innerHTML = 'You Lose!';
-        document.getElementById("word").innerHTML = wordGuess;
-
+        function restartGame(){
+          document.getElementById("underlay").classList.add("hide");
+          document.getElementById("message").classList.add("hide");
+          document.getElementById("ready").classList.remove("hide");
+          document.getElementById("game").classList.add("hide");
         }
 
-        if (!document.getElementById) document.write('<link rel="stylesheet" type="text/css" href="../css/reset.css>');
+        function setupGame() {
+          game = true
+          for (var i = 0; i < wordGuess.length; i++) {
+            unFilled[i] = "_";
+          };
+          guessed = [];
+          lives = 10;
+          document.getElementById("ready").classList.add("hide");
+          document.getElementById("game").classList.remove("hide");
+          document.getElementById("letterGuessed").innerHTML = guessed;
+          document.getElementById("word").innerHTML = unFilled.join(" ");
+          document.getElementById("lives").innerHTML = lives;
+        };
 
-/*
- var leftOvers = wordGuess.length;      
- 
- var remainingLetters = wordGuess.length;
-
-
-
- while (leftOvers > 0) {
-
-
-
-        for (var i = 0; i < wordGuess.length; i++) {
-        if (dogBreed[i] === letterGuess) {
-        wordGuess[i] = letterGuess;
-        }
-}
-}
-*/
 
 
 
